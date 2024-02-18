@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: 'Servco : Mechanical & Electrical Contractor', // NOTE: Entity Name : Entity Title(s)
@@ -15,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Toaster />
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

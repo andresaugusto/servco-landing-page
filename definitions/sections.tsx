@@ -1,9 +1,11 @@
-export const productName: string = "SERVCO"
-const relevantThirdPartyReviewComponent = (contents:  Record<any, any>[]) => <>[ A starred-review-style visual of popular opinion from a relevant source ]</>
-const heroVisualComponent = (contents:  Record<any, any>[]) => <>[ A hero-style visual of the result ]</>
-const additionalVRTVisualComponent = (contents:  Record<any, any>[]) => <>additionalVRTVisualComponent</>
-const socialProofVisualComponent = (contents:  Record<any, any>[]) => <>socialProofVisualComponent</>
-const faqVisualComponent = (contents:  Record<any, any>[]) => <>faqVisualComponent</>
+import {
+  additionalVRTVisualComponent,
+  faqVisualComponent,
+  heroVisualComponent,
+  productName,
+  relevantThirdPartyReviewComponent,
+  socialProofVisualComponent,
+} from "./product"
 
 export const sections: Record<any, any> = [
   {
@@ -13,14 +15,6 @@ export const sections: Record<any, any> = [
       {
         mainProductVRT: `Value, Result, a/o Transformation ${productName} provides`,
         howMainProductVRT: `What ${productName} does that delivers that Value, Result, or Transformation.`,
-        contactForm: {
-          label: "Contact Us",
-          name: "Your name",
-          email: "Your email",
-          message: `A message for us at ${productName} to guide you best.`,
-          ctaCopy: "What Happens Next",
-          ctaSecuritySubtext: "We'll never share your information with anyone.",
-        },
         relevantThirdPartyReview: {
           intention: `[ Reviews component for ${productName} with results from a relevant review source (like yelp for restaurants) ]`,
           component: (contents: Record<any, any>[]) => relevantThirdPartyReviewComponent(contents),
@@ -200,18 +194,15 @@ export const sections: Record<any, any> = [
         superDirectCTAHeadline: `Call to action headline to onboard the potential client into the service/product ${productName} provides`,
         form: {
           label: "Contact Us",
-          name: "Name",
-          email: "Email",
-          message: "Message",
-          ctaCopy: "[ CTA: What Happens Next]",
-          ctaSecuritySubtext: "We'll never share your information with anyone",
+          name: "Your name",
+          email: "Your email",
+          message: `A message for us at ${productName} to guide you best.`,
+          ctaCopy: "What Happens Next",
+          ctaSubmittingCopy: "[ Disabled: Action being Taken... ]",
+          ctaSecuritySubtext: "We'll never share your information with anyone.",
         },
       }
     ],
   },
 
-]
-
-export const viewList = [
-  ...Object.keys(sections),
 ]

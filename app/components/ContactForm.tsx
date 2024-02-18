@@ -1,68 +1,51 @@
 'use client'
-import { sections } from '@/definitions'
 import React from 'react'
-import {useState } from "react"
+import Card from './Card'
 import { Copy } from './Copy'
 import { FadeIn } from './animators/FadeIn'
-import Card from './Card'
-import toast from 'react-hot-toast'
+import { sections } from '@/definitions'
+import { landingPageSpecs, inputsClassNames, placeholdersClassNames } from '@/definitions/landingPage'
+
+import { useForm, SubmitHandler } from 'react-hook-form'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+import { ContactFormSchema } from '@/lib/schema'
+import { sendEmail } from '@/app/_actions'
+import { toast } from 'sonner'
+
+export type ContactFormInputs = z.infer<typeof ContactFormSchema>
+
+// const inputsClassNames = `bg-transparent py-[.5vmin] px-[1vmin] border shadow-inner shadow-primary/05 border-base-content/10 rounded-md`
+// const placeholdersClassNames = `placeholder:text-base-content/25 placeholder:leading-tight placeholder:font- placeholder:text-[.75rem] placeholder:md:text-[.90rem]`
+
 
 const ContactForm: React.FC = () => {
 
-  const [ name, setName ] = useState("")
-  const [ email, setEmail ] = useState("")
-  const [ message, setMessage ] = useState("")
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<ContactFormInputs>({
+    resolver: zodResolver(ContactFormSchema)
+  })
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("data:", name, email, message);
-    try {
-      const response = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({name, email, message}),
-      });
-
-      const data = await response.json();
-      if (data?.success) {
-        toast.success(data?.message, {
-            duration: 7000,
-            ariaProps: {
-              role: 'status',
-              'aria-live': 'polite',
-            },
-        });
-        setName("")
-        setEmail("")
-        setMessage("")
-      } else if (data?.success == false) {
-        toast.error(data?.message, {
-          duration: 7000,
-          ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-          },
-      });
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
+  const processForm: SubmitHandler<ContactFormInputs> = async ( data: ContactFormInputs ) => {
+    
+    const result = await sendEmail(data)
+    
+    if (result?.success) {
+      console.log({ data: result.data })
+      toast.success('Email sent!')
+      reset()
+      return
     }
+
+    console.log(result?.error)
+    toast.error("Something went wrong!")
   }
-
-  const formPlaceholderClassNames = `placeholder:text-base-content/25 placeholder:leading-tight placeholder:font- placeholder:text-[.75rem] placeholder:md:text-[.90rem]`
-
-
-
-  type section = {
-    [key: string]: any;
-    mainProductVRT?: string;
-    howMainProductVRT?: string;
-    contactForm?: Record<any, any>;
-    relevantThirdPartyReview?: string;
-    heroVisualProperties?: string;
-  };
 
   return (
     <FadeIn 
@@ -73,45 +56,56 @@ const ContactForm: React.FC = () => {
       <Card variant="sm">
         <form
           className="grow flex flex-col space-y-[2vmin] sm:space-y-[1vmin]"
-          onSubmit={(e: React.FormEvent) => onSubmit(e)}
+          onSubmit={handleSubmit(processForm)}
         >
           <div className="grow text-center 2xl:justify-end py-[2vmin] lg:py-[1rem]">
-            <Copy variant="caption">{sections[0].contents[0].contactForm.label}</Copy>
+            <Copy variant="caption">{sections[4].contents[0].form.label}</Copy>
           </div>
           <input
-            value={name}
-            name="nameStringFromForm"
-            id="nameStringFromForm"
-            onChange={(e: React.FormEvent) => setName((event!.target as HTMLInputElement)!.value)}
-            type="text"
-            placeholder={sections[0].contents[0].contactForm.name}
-            className={`${formPlaceholderClassNames}  bg-transparent py-[.5vmin] px-[1vmin] border shadow-inner shadow-primary/05 border-base-content/10 rounded-md`}
+            placeholder={sections[4].contents[0].form.name}
+            className={`${placeholdersClassNames} ${inputsClassNames}`}
+            {...register('name')}
           />
+          {errors.name?.message && (
+            <p className= "ml-1 mt-1 text-sm text-red-400">
+              {errors.name.message}
+            </p>
+          )}
           <input
-            value={email}
-            name="emailStringFromForm"
-            id="emailStringFromForm"
-            onChange={(e: React.FormEvent) => setEmail((event!.target as HTMLInputElement)!.value)}
-            type="text"
-            placeholder={sections[0].contents[0].contactForm.email}
-            className={`${formPlaceholderClassNames}  bg-transparent py-[.5vmin] px-[1vmin] border shadow-inner shadow-primary/10 border-base-content/10 rounded-md`}
+            placeholder={sections[4].contents[0].form.email}
+            className={`${placeholdersClassNames} ${inputsClassNames}`}
+            {...register('email')}
           />
+          {errors.email?.message && (
+            <p className= "ml-1 mt-1 text-sm text-red-400">
+              {errors.email.message}
+            </p>
+          )}
           <textarea
-            value={message}
-            name="messageStringFromForm"
-            id="messageStringFromForm"
-            onChange={(e: React.FormEvent) => setMessage((event!.target as HTMLInputElement)!.value)}
-            placeholder={sections[0].contents[0].contactForm.message}
-            className={`${formPlaceholderClassNames}  bg-transparent py-[.5vmin] px-[1vmin] border shadow-inner shadow-primary/10 border-base-content/10 rounded-md`}
+            rows={5}
+            cols={5}
+            placeholder={sections[4].contents[0].form.message}
+            className={`${placeholdersClassNames} ${inputsClassNames}`}
+            {...register('message')}
           />
+          {errors.message?.message && (
+            <p className= "ml-1 mt-1 text-sm text-red-400">
+              {errors.message.message}
+            </p>
+          )}
           <button
-            type="submit"
+            // type="submit"
+            disabled={isSubmitting}
             className="btn btn-primary btn-md border shadow-md shadow-primary/20 border-base-content/10 rounded-md"
             >
-            <Copy variant="h4">{sections[0].contents[0].contactForm.ctaCopy}</Copy>
+            {
+              isSubmitting
+              ? <Copy variant="h4">{sections[4].contents[0].form.ctaSubmittingCopy}</Copy>
+              : <Copy variant="h4">{sections[4].contents[0].form.ctaCopy}</Copy>
+            }
           </button>
           <div className="grow text-center 2xl:justify-end py-[2vmin] lg:py-[1rem]">
-            <Copy variant="caption">{sections[0].contents[0].contactForm.ctaSecuritySubtext}</Copy>
+            <Copy variant="caption">{sections[4].contents[0].form.ctaSecuritySubtext}</Copy>
           </div>
         </form>
       </Card>
