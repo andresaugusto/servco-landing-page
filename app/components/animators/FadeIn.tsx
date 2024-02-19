@@ -13,12 +13,12 @@ interface AnimationInterface extends Interface {
   once?: boolean
 }
 
-export const FadeIn: React.FC<AnimationInterface> = ({ children, className, grow, fromTop, fromBottom, fromLeft, fromRight, whileInView, once }) => {
+const FadeIn: React.FC<AnimationInterface> = ({ children, className, grow, fromTop, fromBottom, fromLeft, fromRight, whileInView, once }) => {
   return (
     <motion.div
       initial={{
-        y: fromTop ? -100 : fromBottom ? 100 : 0,
-        x: fromLeft ? -100 : fromRight ? 100 : 0,
+        y: fromTop ? -50 : fromBottom ? 50 : 0,
+        x: fromLeft ? -50 : fromRight ? 50 : 0,
         opacity: 0,
         scale: grow ? 0 : 1
       }}
@@ -48,3 +48,5 @@ export const FadeIn: React.FC<AnimationInterface> = ({ children, className, grow
     </motion.div>
   )
 }
+
+export default FadeIn

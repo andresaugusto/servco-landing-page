@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import Card from './Card'
-import { Copy } from './Copy'
-import { FadeIn } from './animators/FadeIn'
+import Copy from './Copy'
+import FadeIn from './animators/FadeIn'
 import { sections } from '@/definitions'
 import { landingPageSpecs, inputsClassNames, placeholdersClassNames } from '@/definitions/landingPage'
 

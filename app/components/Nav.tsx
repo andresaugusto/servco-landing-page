@@ -1,5 +1,5 @@
 import React from 'react'
-import {FadeIn} from './animators/FadeIn'
+import FadeIn from './animators/FadeIn'
 import { Link } from './Link'
 import { IoIosCall, IoIosMail, IoLogoLinkedin } from 'react-icons/io'
 import Image from 'next/image'
@@ -30,7 +30,7 @@ const Nav: React.FC = () => {
     <header className="absolute top-0 w-full px-xs">
       <div className="max-w-7xl flex mx-auto z-100 justify-between">
         <FadeIn fromRight className="flex flex-row items-center px-[.5rem]">
-          {/* <Link external id="Home" href="tel:7878312189"> */}
+          {/* <Link external id="Home" href="#hero"> */}
               <Image
                 src="/avatar.png"
                 alt="SERVCO Logo"

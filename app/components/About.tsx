@@ -1,7 +1,7 @@
 import React from 'react'
-import { FadeIn } from './animators/FadeIn'
+import FadeIn from './animators/FadeIn'
 import { sections } from '@/definitions'
-import { Copy } from './Copy'
+import Copy from './Copy'
 import Card from './Card'
 import Image from 'next/image'
 

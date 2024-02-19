@@ -1,8 +1,12 @@
 import { Interface } from "@/app/page";
-import { Montserrat, Jost, Nunito_Sans } from 'next/font/google'
+import { Archivo_Black, Montserrat, Jost, Nunito_Sans } from 'next/font/google'
 
-const displayFont = Nunito_Sans({
+// const displayFont = Nunito_Sans({
+//   subsets: ['latin'],
+// })
+const displayFont = Archivo_Black({
   subsets: ['latin'],
+  weight: ['400']
 })
 const headlineFont = Jost({
   subsets: ['latin'],
@@ -57,7 +61,7 @@ const variants = {
   footnote: { classNames: `${fontSizes.footnote} ${variantStyling.footnote}`, style: {fontStyle: "italic"} },
 }
 
-export const Copy: React.FC<Interface> = ({
+const Copy: React.FC<Interface> = ({
   children,
   variant,
   ...props
@@ -89,4 +93,6 @@ export const Copy: React.FC<Interface> = ({
     ? <p {...props} className={`${variants.common.classNames} ${variants.footnote.classNames}`} style={{...variants.common.style, ...variants.footnote.style}}>{children}</p>
     : <p {...props} className={`${variants.common.classNames} ${variants.body.classNames}`} style={{...variants.common.style, ...variants.body.style}}>{children}</p>
   )
-};
+}
+
+export default Copy

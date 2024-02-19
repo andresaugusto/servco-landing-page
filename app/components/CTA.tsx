@@ -1,7 +1,7 @@
 import React from 'react'
 import ContactForm from './ContactForm'
-import { FadeIn } from './animators/FadeIn'
-import { Copy } from './Copy'
+import FadeIn from './animators/FadeIn'
+import Copy from './Copy'
 import { sections } from '@/definitions'
 import { Signature } from './Signature'
 

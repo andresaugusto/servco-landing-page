@@ -1,5 +1,5 @@
 import React from 'react'
-import { Copy } from './Copy'
+import Copy from './Copy'
 import { productName } from '@/definitions/product'
 
 export const Signature: React.FC = () => {

@@ -1,5 +1,5 @@
 // import React from 'react'
-import { Copy } from '@/app/components/Copy'
+import Copy from '@/app/components/Copy'
 import { productName } from '@/definitions/product'
 
 interface ContactFormEmailProps {
