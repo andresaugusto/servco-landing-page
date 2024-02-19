@@ -1,48 +1,60 @@
 import { Interface } from "@/app/page";
-import { Montserrat, Archivo, Space_Grotesk, Work_Sans, Raleway, Jost, Nunito_Sans } from 'next/font/google'
-
+import { Montserrat, Jost, Nunito_Sans } from 'next/font/google'
 
 const displayFont = Nunito_Sans({
   subsets: ['latin'],
 })
-
 const headlineFont = Jost({
   subsets: ['latin'],
 })
-
 const bodyFont = Montserrat({
   subsets: ['latin'],
 })
 
 const fontSizes = {
-  h1: "text-[2rem] md:text-[4.5rem]",
-  h2: "text-[1.5rem] md:text-[2.441rem]",
-  h3: "text-[1.3rem] md:text-[2rem]",
-  h4: "text-[.8rem] md:text-[.95rem]",
-  h5: "text-[1rem] md:text-[.95rem]",
-  h5Hl: "text-[1rem] md:text-[1.5rem]",
-  h6: "text-[.82rem] md:text-[.90rem]",
-  h6Hl: "text-[.82rem] md:text-[.90rem]",
-  body: "text-[.66rem] md:text-[.80rem]",
-  caption: "text-[.66rem] md:text-[.80rem]",
-  headerAndFooter: "text-[.66rem] md:text-[.80rem]",
-  footnote: "text-[.6rem]",
+  h1: "text-[2rem] xl:text-[6vmin]",
+  h2: "text-[1.5rem] xl:text-[3vmin]",
+  h3: "text-[1.3rem] xl:text-[2.8vmin]",
+  h4: "text-[.8rem] xl:text-[.9vmin]",
+  h5: "text-[1rem] xl:text-[1vmin]",
+  h5Hl: "text-[1rem] xl:text-[1.2vmin]",
+  h6: "text-[.82rem] xl:text-[.9vmin]",
+  h6Hl: "text-[.82rem] xl:text-[.9vmin]",
+  body: "text-[.66rem] xl:text-[.80vmin]",
+  caption: "text-[.66rem] xl:text-[.80vmin]",
+  headerAndFooter: "text-[.66rem] xl:text-[.80vmin]",
+  footnote: "text-[.6rem] xl:text-[.78vmin]",
+}
+
+const variantStyling = {
+  h1: "font-black tracking-tight leading-tight",
+  h2: "font-light tracking-tight leading-tight",
+  h3: "text-primary opacity-50 font-light tracking-tight leading-regular",
+  h4: "opacity-95 font-light tracking-snug leading-snug",
+  h5: "opacity-75 font-bold tracking-wide leading-regular",
+  h5Hl: "opacity-50 tracking-wide leading-regular",
+  h6: "opacity-75 font-bold tracking-wide leading-regular",
+  h6Hl: "opacity-50 tracking-wide leading-regular",
+  body: "opacity-75 tracking-wide leading-tight",
+  caption: "opacity-50 tracking-wide font-semibold leading-snug",
+  headerAndFooter: "font-black tracking-widest leading-regular",
+  footnote: "font-light text-center hover:cursor-none text-base-content/30 hover:text-base-content/60 leading-regular",
 }
 
 const variants = {
-  common: { classNames: `${bodyFont.className}`, style: {} }, // NOTE: shared
-  h1: { classNames: `${fontSizes.h1} ${displayFont.className} font-black tracking-tight leading-tight`, style: {} },
-  h2: { classNames: `${fontSizes.h2} ${headlineFont.className} font-light tracking-tight leading-tight`, style: {} },
-  h3: { classNames: `${fontSizes.h3} ${headlineFont.className} text-primary opacity-50 font-light tracking-tight leading-regular`, style: {} },
-  h4: { classNames: `${fontSizes.h4} ${bodyFont.className} opacity-95 font-light tracking-snug leading-snug`, style: {fontStyle: "italic"} },
-  h5: { classNames: `${fontSizes.h5} ${headlineFont.className} opacity-75 font-bold tracking-wide leading-regular`, style: {} },
-  h5Hl: { classNames: `${fontSizes.h5Hl} ${headlineFont.className} opacity-50 tracking-wide leading-regular`, style: {} },
-  h6: { classNames: `${fontSizes.h6} ${headlineFont.className} opacity-75 font-bold tracking-wide leading-regular`, style: {} },
-  h6Hl: { classNames: `${fontSizes.h6Hl} ${headlineFont.className} opacity-50 tracking-wide leading-regular`, style: {} },
-  body: { classNames: `${fontSizes.body} opacity-75 tracking-wide leading-tight`, style: {} },
-  caption: { classNames: `${fontSizes.caption} opacity-50 tracking-wide font-semibold leading-snug`, style: {} },
-  headerAndFooter: { classNames: `${fontSizes.headerAndFooter} font-black tracking-widest leading-regular`, style: {} },
-  footnote: { classNames: `${fontSizes.footnote} font-light text-center hover:cursor-none text-base-content/30 hover:text-base-content/60 leading-regular`, style: {fontStyle: "italic"} },
+  common: { classNames: `${bodyFont.className}`, style: {} }, // shared
+  h1: { classNames: `${fontSizes.h1} ${displayFont.className} ${variantStyling.h1}`, style: {} },
+  h2: { classNames: `${fontSizes.h2} ${headlineFont.className} ${variantStyling.h2}`, style: {} },
+  h3: { classNames: `${fontSizes.h3} ${headlineFont.className} ${variantStyling.h3}`, style: {} },
+  h4: { classNames: `${fontSizes.h4} ${bodyFont.className} ${variantStyling.h4}`, style: {fontStyle: "italic"} },
+  h5: { classNames: `${fontSizes.h5} ${headlineFont.className} ${variantStyling.h5}`, style: {} },
+  h5Hl: { classNames: `${fontSizes.h5Hl} ${headlineFont.className} ${variantStyling.h5Hl}`, style: {} },
+  h6: { classNames: `${fontSizes.h6} ${headlineFont.className} ${variantStyling.h6}`, style: {} },
+  h6Hl: { classNames: `${fontSizes.h6Hl} ${headlineFont.className} ${variantStyling.h6Hl}`, style: {} },
+  body: { classNames: `${fontSizes.body} ${variantStyling.body}`, style: {} },
+  caption: { classNames: `${fontSizes.caption} ${variantStyling.caption}`, style: {} },
+  headerAndFooter: { classNames: `${fontSizes.headerAndFooter} ${variantStyling.headerAndFooter}`, style: {} },
+  footnote: { classNames: `${fontSizes.footnote} ${variantStyling.footnote}`, style: {fontStyle: "italic"} },
 }
 
 export const Copy: React.FC<Interface> = ({

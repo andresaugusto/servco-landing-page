@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     <div
       className="h-screen snap-y snap-mandatory overflow-scroll z-0"
     >
-      <Nav /> 
+      <Nav />
       <section id="hero" className="snap-start">
         <Hero />
       </section>
