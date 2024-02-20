@@ -31,53 +31,29 @@ const SocialProof: React.FC = () => {
                   className="snap-center"
                 >
                   <Card variant="md">
-                    {/* <div className="card-body flex flex-col text-center items-center"> */}
-                      <div className="grow card-title text-center my-auto mx-[5vmin] py-[1.75vmin]">
-                        <Copy variant="h4">
-                        {`" ${proof.proof} "`}
-                        </Copy>
-                      </div>
-                      <div className="flex flex-col text-center items-center mx-[4vmin] md:mx-[2vmin] mb-[6vmin] md:mb-[3vmin] space-y-[2vmin] sm:space-y-[1vmin]">
-                        <figure className="flex justify-center">
-                          <Image
-                            className="rounded-full overflow-hidden w-[10vmin] h-[10vmin] max-w-[50px] max-h-[50px]"
-                            src={proof.socialProofVisualProperties.source}
-                            alt={proof.socialProofVisualProperties.title}
-                            height={50}
-                            width={50}
-                          />
-                        </figure>
-                        <Copy variant="caption">
-                          {proof.from}
-                        </Copy>
-                        <Copy variant="body">
-                          {proof.stars}
-                        </Copy>
-                      </div>
-                    {/* </div> */}
-                  </Card>
-
-                  {/* <Card variant="md">
-                    <figure className="grow bg-red-100 w-full flex justify-center rounded-tl-md rounded-tr-md">
-                      <Image
-                        className="rounded-tl-2xl rounded-tr-2xl"
-                        src={benefit.benefitVisualProperties.source}
-                        alt={benefit.benefitVisualProperties.title}
-                        height={1000}
-                        width={1000}
-                      />
-                    </figure>
-                    <div className="card-body space-y-sm">
-                      <div className="card-title">
-                        <Copy variant="h2">
-                          {benefit.additionalVRT}
-                        </Copy>
-                      </div>
-                        <Copy variant="h6-hl">
-                          {benefit.benefitDeliveringAdditionalVRT}
-                        </Copy>
+                    <div className="grow card-title text-center my-auto mx-[5vmin] py-[1.75vmin]">
+                      <Copy variant="h4">
+                      {`" ${proof.proof} "`}
+                      </Copy>
                     </div>
-                  </Card> */}
+                    <div className="flex flex-col text-center items-center mx-[4vmin] md:mx-[2vmin] mb-[6vmin] md:mb-[3vmin] space-y-[2vmin] sm:space-y-[1vmin]">
+                      <figure className="flex justify-center">
+                        <Image
+                          className="rounded-full overflow-hidden w-[10vmin] h-[10vmin] max-w-[50px] max-h-[50px]"
+                          src={proof.socialProofVisualProperties.source}
+                          alt={proof.socialProofVisualProperties.title}
+                          height={50}
+                          width={50}
+                        />
+                      </figure>
+                      <Copy variant="caption">
+                        {proof.from}
+                      </Copy>
+                      <Copy variant="body">
+                        {proof.stars}
+                      </Copy>
+                    </div>
+                  </Card>
                 </div>
               )
             })
@@ -92,19 +68,14 @@ const SocialProof: React.FC = () => {
                 {
                   section.clients.map((client: Record<any, any>, key: React.Key) => {
                     return (
-                      // <div
-                      //   key={key}
-                      //   className="flex justify-center align-center"
-                      // >
-                        <figure className="flex justify-center relative w-[10vmin] h-[4vmin] m-[2vmin]">
-                          <Image
-                            className={`opacity-60 brightness-0 dark:invert`}
-                            src={client.logoSource}
-                            alt={client.name}
-                            fill
-                          />
-                        </figure>
-                      // </div>
+                      <figure key={key} className="flex justify-center relative w-[10vmin] h-[4vmin] m-[2vmin]">
+                        <Image
+                          className={`opacity-60 brightness-0 dark:invert`}
+                          src={client.logoSource}
+                          alt={client.name}
+                          fill
+                        />
+                      </figure>
                     )
                   })
                 }
