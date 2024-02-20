@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       id={sections[0].type}
       className="h-screen mx-lg flex flex-col-reverse 2xl:flex-row space-y-xl 2xl:space-x-md items-center justify-center"
     >
-      <div className="2xl:max-w-1/2 m-lg text-center space-y-md 2xl:space-y-sm 2xl:text-start">   
+      <div className="2xl:max-w-1/2 m-lg text-center  space-y-[2vmin] sm:space-y-[1vmin] 2xl:space-y-sm 2xl:text-start">   
         <FadeIn whileInView fromBottom>
           <Copy variant="h1">{sections[0].contents[0].mainProductVRT}</Copy>
         </FadeIn>

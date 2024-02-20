@@ -11,7 +11,7 @@ const About: React.FC = () => {
       id={sections[1].type}
       className="h-screen relative m-sm flex flex-col text-center md:text-left md:flex-row justify-evenly mx-auto items-center"
     >
-      <FadeIn whileInView fromBottom once
+      <div
         className="w-full flex space-x-md overflow-x-scroll snap-x snap-mandatory px-xl py-lg"
       >
         {
@@ -22,31 +22,31 @@ const About: React.FC = () => {
                 className="snap-center"
               >
                 <Card variant="lg">
-                  <figure className="w-full flex justify-center rounded-tl-md rounded-tr-md">
+                  <figure className="grow bg-red-100 w-full flex justify-center rounded-tl-md rounded-tr-md">
                     <Image
-                      className="rounded-tl-2xl rounded-tr-2xl overflow-hidden"
+                      className="rounded-tl-2xl rounded-tr-2xl"
                       src={benefit.benefitVisualProperties.source}
                       alt={benefit.benefitVisualProperties.title}
                       height={1000}
                       width={1000}
                     />
                   </figure>
-                  <div className="card-body space-y-sm">
+                  <div className="card-body space-y-[2vmin] sm:space-y-[1vmin]">
                     <div className="card-title">
                       <Copy variant="h2">
                         {benefit.additionalVRT}
                       </Copy>
                     </div>
-                    <Copy variant="h6-hl">
-                      {benefit.benefitDeliveringAdditionalVRT}
-                    </Copy>
+                      <Copy variant="h6-hl">
+                        {benefit.benefitDeliveringAdditionalVRT}
+                      </Copy>
                   </div>
                 </Card>
               </div>
             )
           })
         }
-      </FadeIn>
+      </div>
     </div>
   )
 }

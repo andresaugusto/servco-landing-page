@@ -28,7 +28,7 @@ const resend = new Resend(`${process.env.RESEND_ONBOARDING_API_KEY}`)
 
 // server action
 export async function sendEmail(data: ContactFormInputs) {
-  const result = ContactFormSchema.safeParse(data)
+  const result = ContactFormSchema.safeParse(data) 
   console.log("result log from _actions.ts:", result)
 
   if (result.success) {
@@ -42,7 +42,8 @@ export async function sendEmail(data: ContactFormInputs) {
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         react: ContactFormEmail({ name, email, message }),
       })
-      return { success: true, data: result }
+      // where webhook would go to wait for the call's return
+      return { success: result.success, data: result }
     } catch (error) {
       return { success: false, error }
     }

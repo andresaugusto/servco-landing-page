@@ -55,12 +55,12 @@ const ContactForm: React.FC = () => {
     >
       <Card variant="sm">
         <form
-          className="grow flex flex-col space-y-[2vmin] sm:space-y-[1vmin]"
+          className="grow flex flex-col space-y-[2vmin] sm:space-y-[1vmin] p-[4vmin] md:p-[1rem]"
           onSubmit={handleSubmit(processForm)}
         >
-          <div className="grow text-center 2xl:justify-end py-[2vmin] lg:py-[1rem]">
+          {/* <div className="grow text-center 2xl:justify-end py-[2vmin] lg:py-[1rem]">
             <Copy variant="caption">{sections[4].contents[0].form.label}</Copy>
-          </div>
+          </div> */}
           <input
             placeholder={sections[4].contents[0].form.name}
             className={`${placeholdersClassNames} ${inputsClassNames}`}
@@ -82,7 +82,7 @@ const ContactForm: React.FC = () => {
             </p>
           )}
           <textarea
-            rows={5}
+            rows={2}
             cols={5}
             placeholder={sections[4].contents[0].form.message}
             className={`${placeholdersClassNames} ${inputsClassNames}`}

@@ -28,7 +28,7 @@ const socials: Record<any, any>[] = [
 const Nav: React.FC = () => {
   return (
     <header className="absolute top-0 w-full px-xs">
-      <div className="max-w-7xl flex mx-auto z-100 justify-between">
+      <div className="flex mx-[1vmin] z-100 justify-between">
         <FadeIn fromRight className="flex flex-row items-center px-[.5rem]">
           {/* <Link external id="Home" href="#hero"> */}
               <Image
