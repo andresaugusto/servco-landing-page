@@ -22,7 +22,7 @@ const About: React.FC = () => {
                 className="snap-center"
               >
                 <Card variant="lg">
-                  <figure className="grow bg-red-100 w-full flex justify-center rounded-tl-md rounded-tr-md">
+                  <figure className="grow w-full flex justify-center rounded-tl-md rounded-tr-md">
                     <Image
                       className="rounded-tl-2xl rounded-tr-2xl"
                       src={benefit.benefitVisualProperties.source}
